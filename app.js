@@ -30,7 +30,6 @@ function showNotes() {
   let date = noteDate.getDate();
   let month = noteDate.getMonth()+1;
   let year = noteDate.getFullYear();
-
   notesObj.forEach(function (element, index) {
     html += `
        <div class="card noteCard mx-2 my-2" style="width: 18rem;">
