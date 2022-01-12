@@ -5,15 +5,26 @@ let addBtn = document.getElementById("addBtn");
 
 addBtn.addEventListener("click", function (e) {
   let addTxt = document.getElementById("addTxt");
+  let addTitle = document.getElementById("addTitle");
   let notes = localStorage.getItem("notes");
+
+
+
   if (notes == null) {
     notesObj = [];
   } else {
     notesObj = JSON.parse(notes);
   }
-  notesObj.push(addTxt.value);
+
+  let myObj ={
+    title: addTitle.value,
+    text: addTxt.value
+  }
+
+  notesObj.push(myObj);
   localStorage.setItem("notes", JSON.stringify(notesObj));
   addTxt.value = "";
+  addTitle.value = "";
   console.log(notesObj);
   showNotes();
 });
@@ -30,16 +41,16 @@ function showNotes() {
   let date = noteDate.getDate();
   let month = noteDate.getMonth()+1;
   let year = noteDate.getFullYear();
-  notesObj.forEach(function (element, index) {
+  notesObj.forEach(function (element, index){
     html += `
-       <div class="card noteCard mx-2 my-2" style="width: 18rem;">
-           <div class="card-body">
-           <p> Date: ${date}/${month}/${year}</p>
-             <h5 class="card-title">Note ${index + 1}</h5>
-             <p class = "card-text">${element}</p>
-             <button id="${index}" onclick="deleteNode(this.id)" class="btn btn-primary">Delete Note</button>
-           </div>
-       </div>`;
+      <div class="card noteCard mx-2 my-2" style="width: 18rem;">
+            <div class="card-body">
+            <p> Date: ${date}/${month}/${year}</p>
+              <h5 class="card-title">${element.title} ${index+1}</h5>
+              <p class = "card-text">${element.text}</p>
+              <button id="${index}" onclick="deleteNode(this.id)" class="          btn-primary">Delete Note</button>
+            </div>
+      </div>`;
   });
   let notesElm = document.getElementById("notes");
   if (notesObj.length != 0) {

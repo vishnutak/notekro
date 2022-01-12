@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes App</title>
@@ -57,9 +57,17 @@
       <h1>Welcome To myNote</h1>
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Add a Note</h5>
+          
+
           <div class="mb-3">
-            <textarea class="form-control" id="addTxt" rows="3"></textarea>
+            <h5 class="card-title">Add Title</h5>
+            <input type="text" class="form-control" id="addTitle" aria-describedby="title" placeholder="Enter title">
+          </div>
+
+          <h5 class="card-title">Add a Note</h5>
+          
+          <div class="mb-3">
+            <textarea class="form-control" id="addTxt" rows="3" placeholder="Enter Notes"></textarea>
           </div>
           <button class="btn btn-primary" id="addBtn">Ad a note</button>
         </div>
